@@ -1,0 +1,178 @@
+{
+    "Rig": [
+        {
+            "type": "button",
+            "text": "Loop Out",
+            "script": "loopOut"
+        },
+        {
+            "type": "button",
+            "text": "Rig",
+            "script": "rig"
+        },
+        {
+            "type": "button",
+            "text": "Link",
+            "script": "link"
+        },
+        {
+            "type": "button",
+            "text": "Bone",
+            "script": "bone"
+        },
+        {
+            "type": "button",
+            "text": "Stagger",
+            "script": "stagger"
+        },
+        {
+            "type": "button",
+            "text": "Anchor",
+            "script": "anchor"
+        },
+        {
+            "type": "button",
+            "text": "Joint",
+            "script": "joint"
+        },
+        {
+            "type": "button",
+            "text": "Move Dir",
+            "script": "moveDirection"
+        },
+        {
+            "type": "button",
+            "text": "Move Set",
+            "script": "moveSet"
+        },
+        {
+            "type": "statictext",
+            "text": "Swing"
+        },
+        {
+            "type": "button",
+            "text": "Swing",
+            "script": "swing"
+        },
+        {
+            "type": "button",
+            "text": "S. Toward",
+            "script": "swingToward"
+        },
+        {
+            "type": "button",
+            "text": "S. Offset",
+            "script": "swingOffset"
+        },
+        {
+            "type": "button",
+            "text": "S. Rotate",
+            "script": "swingRotate"
+        },
+        {
+            "type": "button",
+            "text": "S. Puppet",
+            "script": "swingPuppet"
+        }
+    ],
+    "General": [
+        {
+            "type": "button",
+            "text": "Scale",
+            "script": "scale"
+        },
+        {
+            "type": "button",
+            "text": "Round",
+            "script": "round"
+        },
+        {
+            "type": "button",
+            "text": "Graph Spd",
+            "script": "graphSpd"
+        },
+        {
+            "type": "button",
+            "text": "Loop Cmp",
+            "script": "loopComp"
+        },
+        {
+            "type": "button",
+            "text": "Loop Evo",
+            "script": "loopEvo"
+        },
+        {
+            "type": "button",
+            "text": "Clear Exp",
+            "script": "clearExpression"
+        },
+        {
+            "type": "button",
+            "text": "Add Noise",
+            "script": "addNoise"
+        },
+        {
+            "type": "button",
+            "text": "Slider",
+            "script": "slider"
+        },
+        {
+            "type": "statictext",
+            "text": "Experimental"
+        },
+        {
+            "type": "button",
+            "text": "Parallax",
+            "script": "parallax"
+        },
+        {
+            "type": "button",
+            "text": "Chain",
+            "script": "chain"
+        },
+        {
+            "type": "button",
+            "text": "Skeleton",
+            "script": "skeleton"
+        },
+        {
+            "type": "button",
+            "text": "Stitch",
+            "script": "stitch"
+        }
+    ],
+    "Settings": [
+        {
+            "type": "statictext",
+            "text": "General"
+        },
+        {
+            "type": "variable",
+            "text": "Loop",
+            "variable": "loopLength",
+            "value": "4"
+        },
+        {
+            "type": "statictext",
+            "text": "Movement"
+        },
+        {
+            "type": "variable",
+            "text": "Speed %",
+            "variable": "speedPercent",
+            "value": "10"
+        },
+        {
+            "type": "variable",
+            "text": "Round %",
+            "variable": "roundPercent",
+            "value": "10"
+        },
+        {
+            "type": "checkbox",
+            "text": "Flip Handles",
+            "variable": "flipHandles",
+            "value": false
+        }
+    ]
+}

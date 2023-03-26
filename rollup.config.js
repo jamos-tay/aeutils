@@ -3,6 +3,8 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import fs from 'fs';
 import path from 'path';
+import globImport from 'rollup-plugin-glob-import';
+import json from '@rollup/plugin-json';
 
 /**
  * Change this to your AE script folder if you would like to autocopy the compiled script to the scripts folder
@@ -23,6 +25,8 @@ const config = {
         name: 'exportedAEUtils',
     },
     plugins: [
+        json(),
+        globImport(),
         commonjs(),
         nodeResolve({
             include: ["src/**"],
