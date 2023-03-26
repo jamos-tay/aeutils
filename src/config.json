@@ -3,47 +3,56 @@
         {
             "type": "button",
             "text": "Loop Out",
-            "script": "loopOut"
+            "script": "loopOut",
+            "tooltip": "Sets loopOut() on all selected properties"
         },
         {
             "type": "button",
             "text": "Rig",
-            "script": "rig"
+            "script": "rig",
+            "tooltip": "Rigs a layer to a puppet pin on another layer. Select a layer and a puppet pin."
         },
         {
             "type": "button",
             "text": "Link",
-            "script": "link"
+            "script": "link",
+            "tooltip": "Links a puppet pin (child) to another puppet pin's (parent) absolute position, ignoring all parenting. Select two puppet pins on different layers."
         },
         {
             "type": "button",
-            "text": "Bone",
-            "script": "bone"
+            "text": "Pair Pin",
+            "script": "group",
+            "tooltip": "Pairs a puppet pin (child) to another puppet pin (parent) so the child pin moves with the parent. Select two puppet pins on the same layer."
         },
         {
             "type": "button",
             "text": "Stagger",
-            "script": "stagger"
+            "script": "stagger",
+            "tooltip": "Staggers the start time of animated properties so their first keyframe starts at 0, n, 2n, 3n... etc. frames. Select multiple properties with keyframes."
         },
         {
             "type": "button",
             "text": "Anchor",
-            "script": "anchor"
+            "script": "anchor",
+            "tooltip": "Anchors a puppet pin to its current position on the composition so it does not move. Select 1 or more puppet pins."
         },
         {
             "type": "button",
             "text": "Joint",
-            "script": "joint"
+            "script": "joint",
+            "tooltip": "Sets up inverse kinematics on the selected puppet pins. Select 3 (Anchor, Joint, Controller) or 4 (Anchor, Joint, Inner Joint, Controller) puppet pins. Please see the user guide for more information."
         },
         {
             "type": "button",
             "text": "Move Dir",
-            "script": "moveDirection"
+            "script": "moveDirection",
+            "tooltip": "Creates a 2 keyframe loop that moves the selected item's position by a fixed amount of pixels, in a fixed direction (0 - 12, like a clock face). Select any Position property (layer Position or puppet pin Position)."
         },
         {
             "type": "button",
             "text": "Move Set",
-            "script": "moveSet"
+            "script": "moveSet",
+            "tooltip": "Creates a 2 keyframe loop that animates the selected property's value between two given values (e.g. 10;20). Select any animatable property."
         },
         {
             "type": "statictext",
@@ -52,69 +61,76 @@
         {
             "type": "button",
             "text": "Swing",
-            "script": "swing"
+            "script": "swing",
+            "tooltip": "Creates a 2 keyframe loop that rotates puppet pins back and forth around the layer's anchor point. The degree specifies how much to move and the stagger specifies the delay between each puppet pin's animation. Select any number of puppet pins on a layer. "
         },
         {
             "type": "button",
             "text": "S. Toward",
-            "script": "swingToward"
+            "script": "swingToward",
+            "tooltip": "Same as swing, but the puppet pin moves toward and away from the anchor point instead of rotating around."
         },
         {
             "type": "button",
             "text": "S. Offset",
-            "script": "swingOffset"
+            "script": "swingOffset",
+            "tooltip": "Same as swing, but you can specify the start and end degrees. E.g. (0 to 12 instead of -6 to 6)."
         },
         {
             "type": "button",
             "text": "S. Rotate",
-            "script": "swingRotate"
+            "script": "swingRotate",
+            "tooltip": "Same as swing, but each puppet pin will be rotated around the previous puppet pin by a specified amount. Puppet pins are ordered from bottom to top by how they're displayed on the Timeline."
         },
         {
             "type": "button",
             "text": "S. Puppet",
-            "script": "swingPuppet"
+            "script": "swingPuppet",
+            "tooltip": "Same as swing, but the puppet pins will be rotated around the first selected puppet pin (the bottom-most selected one in the Timeline)."
         }
     ],
     "General": [
         {
             "type": "button",
             "text": "Scale",
-            "script": "scale"
-        },
-        {
-            "type": "button",
-            "text": "Round",
-            "script": "round"
-        },
-        {
-            "type": "button",
-            "text": "Graph Spd",
-            "script": "graphSpd"
+            "script": "scale",
+            "tooltip": "Scales the selected keyframes by a specified amount based on the range of values covered by the keyframes. (e.g. [Rotate between 90 - 110] (scale 2x) => [Rotate between 80 - 120]). Select all keyframes of a property."
         },
         {
             "type": "button",
             "text": "Loop Cmp",
-            "script": "loopComp"
+            "script": "loopComp",
+            "tooltip": "Makes the current layer loop between a specified start and end time, adding a crossfade at the end which crossfades to the beginning. Select a layer (preferably a precomp with no keyframes)."
         },
         {
             "type": "button",
             "text": "Loop Evo",
-            "script": "loopEvo"
+            "script": "loopEvo",
+            "tooltip": "Attempts to loop the effects of some stock After Effects plugins (i.e. sets the Evolution, Cycle Evolution and Cycle (in Revolutions) properties). Select an effect on a layer such as Fractal Noise or Turbulent Displace."
         },
         {
             "type": "button",
             "text": "Clear Exp",
-            "script": "clearExpression"
+            "script": "clearExpression",
+            "tooltip": "Clears the current expression on the selected properties."
         },
         {
             "type": "button",
             "text": "Add Noise",
-            "script": "addNoise"
+            "script": "addNoise",
+            "tooltip": "Adds a looping Fractal Noise layer."
         },
         {
             "type": "button",
             "text": "Slider",
-            "script": "slider"
+            "script": "slider",
+            "tooltip": "Given a property (or multiple properties) that has 2 keyframes, a start and an end position, links it to a slider control so the property will move from start to end as the slider moves from 0 - 1. Select any number of properties with exactly two keyframes."
+        },
+        {
+            "type": "button",
+            "text": "Wiggle",
+            "script": "wiggle",
+            "tooltip": "Adds a looping wiggle with the given frequency and amplitude. Select any number of properties."
         },
         {
             "type": "statictext",
@@ -123,22 +139,38 @@
         {
             "type": "button",
             "text": "Parallax",
-            "script": "parallax"
+            "script": "parallax",
+            "tooltip": "Sets up fake parallax on 2D layers without using a camera. Select any number of layers. Use the X and Y properties on the new layer to control the camera, and the added slider on each layer denotes the distance from the camera. Probably don't use this."
         },
         {
             "type": "button",
             "text": "Chain",
-            "script": "chain"
+            "script": "chain",
+            "tooltip": "Given two parent puppet pins positioned at two corners of a rectangle, chains all other puppet pins so their X and Y position stays relative to their position in the rectangle. Select any number of puppet pins, the two bottom-most puppet pins in the Timeline will be the parents."
         },
         {
             "type": "button",
             "text": "Skeleton",
-            "script": "skeleton"
+            "script": "skeleton",
+            "tooltip": "Links each selected puppet pin's position to a new null object's position. Helpful for stacking position animations. Select any number of puppet pins on a single layer."
         },
         {
             "type": "button",
             "text": "Stitch",
-            "script": "stitch"
+            "script": "stitch",
+            "tooltip": "Stitches two layers together so each child layer's puppet pins are linked (same as Link button) to a puppet pin on the parent layer if they are close enough. Place puppet pins in the same locations on two layers, and select the two layers."
+        },
+        {
+            "type": "button",
+            "text": "Round",
+            "script": "round",
+            "tooltip": "Attempts to round the corners of a position animation. The roundness is determined by the Round % variable in settings. Select any Position property's keyframes."
+        },
+        {
+            "type": "button",
+            "text": "Graph Spd",
+            "script": "graphSpd",
+            "tooltip": "Easy ease always causes puppet pins to come to a stop at a keyframe. Bumps up the speed graph keyframes slightly so the puppet pin never has 0 speed. The minimum speed is determined by the Speed % variable in settings. Select any property's keyframes."
         }
     ],
     "Settings": [

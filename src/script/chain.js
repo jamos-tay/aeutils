@@ -10,20 +10,14 @@ export default function chain() {
         return;
     }
 
-    const allPoints = compUtils.getSelectedPuppetPins(selectedLayers[0]);
-    const childPoints = [];
-    const parentPoints = [];
-    for (let i = 0; i < allPoints.length; i++) {
-        if (compUtils.isChild(allPoints[i].name)) {
-            childPoints.push(allPoints[i]);
-        } else {
-            parentPoints.push(allPoints[i]);
-        }
-    }
-    if (parentPoints.length != 2) {
-        alert('Expected exactly two parent points');
+    const allPoints = compUtils.getSelectedPuppetPins(selectedLayers[0]).reverse();
+    if (allPoints.length < 3) {
+        alert('Expected at least 3 selected puppet pins');
         return;
     }
+    const parentPoints = [allPoints[0], allPoints[1]];
+    allPoints.splice(0, 2);
+    const childPoints = allPoints;
 
     for (let i = 0; i < childPoints.length; i++) {
         const childPoint = childPoints[i];
