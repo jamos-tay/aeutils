@@ -51,7 +51,7 @@ const config = {
                 if (fs.existsSync(path.dirname(FILE_PATH))) {
                     fs.appendFile('dist/aeutils.js', 'exportedAEUtils(this);', () => {
                         fs.copyFile('dist/aeutils.js', FILE_PATH, () => undefined);
-                        fs.copyFile('dist/aeutils.js', 'aeutils-built.js', () => undefined);
+                        fs.copyFile('dist/aeutils.js', 'build/AEUtils.jsx', () => undefined);
                     });
                 } else {
                     console.error('ERROR: Cannot find AE script directory. Ensure that the file path in rollup.config is correct.')
