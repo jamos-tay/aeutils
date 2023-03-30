@@ -21,6 +21,15 @@ function getPuppetPointsRecursive(prop, points) {
     }
 }
 
+export function findPropertyWithName(props, name) {
+    for (let i = 0; i < props.length; i++) {
+        if (props[i].name == name) {
+            return props[i];
+        }
+    }
+    return null;
+}
+
 export function findProperty(prop, name) {
     if (prop.propertyType == PropertyType.PROPERTY) {
         if (prop.name == name) {

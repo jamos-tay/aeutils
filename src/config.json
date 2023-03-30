@@ -4,7 +4,7 @@
             "type": "button",
             "text": "Loop Out",
             "script": "loopOut",
-            "tooltip": "Sets loopOut() on all selected properties"
+            "tooltip": "Sets loopOut() on all selected properties with at least two keyframes and no expression."
         },
         {
             "type": "button",
@@ -21,7 +21,7 @@
         {
             "type": "button",
             "text": "Pair Pin",
-            "script": "group",
+            "script": "bone",
             "tooltip": "Pairs a puppet pin (child) to another puppet pin (parent) so the child pin moves with the parent. Select two puppet pins on the same layer."
         },
         {

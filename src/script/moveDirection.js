@@ -11,18 +11,12 @@ export default function moveDirection() {
 }
 
 function move() {
-    const comp = compUtils.getActiveComp();
-    const selectedLayers = compUtils.getSelectedLayers(comp);
-    if (selectedLayers.length != 1) {
-        alert('Expected only one selected layer');
+    const property = compUtils.findPropertyWithName(compUtils.getAllSelectedProperties(), 'Position');
+    if (property == null) {
+        alert('Select one Position property (not the Puppet Pin)');
         return;
     }
-    const property = compUtils.findProperty(selectedLayers[0], "Position");
-    if (!property) {
-        alert('Select a Position property');
-        return;
-    }
-
+    
     const loopTime = parseFloat(variableUtils.getVariable("loopLength"));
     if (isNaN(loopTime)) {
         alert('Invalid loop length');

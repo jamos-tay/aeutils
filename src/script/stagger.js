@@ -2,7 +2,8 @@ import * as compUtils from '../utils/compUtils'
 
 export default function stagger(responses, props) {
     responses = responses || [];
-    if (!props || props.length == 0) {
+    props = props || [];
+    if (props.length == 0) {
         const selectedProperties = compUtils.getAllSelectedProperties();
         for (let j = 0; j < selectedProperties.length; j++){
             if (selectedProperties[j].canSetExpression && selectedProperties[j].numKeys >= 2) {

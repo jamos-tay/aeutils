@@ -1,3 +1,10 @@
+- [AEUtils](#aeutils)
+  - [User Installation](#user-installation)
+  - [Dev Environment Setup](#dev-environment-setup)
+    - [Requirements](#requirements)
+    - [Set up](#set-up)
+    - [Lint and Test](#lint-and-test)
+
 # AEUtils
 
 A collection of AE scripts for making smooth, looping animations.
@@ -12,7 +19,7 @@ A collection of AE scripts for making smooth, looping animations.
     - Should be like `C:/Program Files/Adobe/Adobe After Effects 20XX/Support Files/Scripts/ScriptUI Panels/AEUtils.jsx`
 4. Open After Effects, click Window in the menu bar at the top and click `AEUtils.jsx`.
 
-See the User Guide for more information (TODO).
+See the [User Guide](user_docs.md) for more information.
 
 ## Dev Environment Setup
 
