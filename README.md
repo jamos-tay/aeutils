@@ -7,7 +7,7 @@
 
 # AEUtils
 
-A collection of AE scripts for making smooth, looping animations.
+A collection of AE scripts for quickly making smooth, looping animations.
 
 ![Plugin](img/plugin.png)
 
