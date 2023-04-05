@@ -43,6 +43,7 @@
 - [Etc](#etc)
   - [Optimization Tips](#optimization-tips)
     - [Parenting](#parenting)
+    - [Joint](#joint-1)
 
 # Foreword
 
@@ -247,6 +248,8 @@ Here's how the selection should be done before `Joint` is clicked:
     ![Joint24](img/joint24.png)
 
 Note: You will get an error if your Controller (wrist) is dragged too far from the Anchor (shoulder). The elbow can't be placed without breaking the arm.
+
+*See also [Joint](#joint-1)*
 
 ## Move Arc
 
@@ -515,3 +518,11 @@ Small things I added in to make usage slightly easier at the cost of intuitivene
 ### Parenting
 
 - For functions that require a child and parent pin (like pair pin or link), if a puppet pin with a default name (like Puppet Pin 3) and a puppet pin with a non-default name (like Head or Jaw) is selected, the default named puppet pin will be assumed to be the child, e.g. 
+
+### Joint
+
+Joint will automatically attempt to assign roles to puppet pins based on letter name:
+- Anchor: `A`
+- Joint: `J`
+- Inner Joint: `JI`
+- Controller: `C`
