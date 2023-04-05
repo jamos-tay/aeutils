@@ -132,7 +132,7 @@ If these conditions are met, your work area is guaranteed to be a perfect loop. 
 - You use the minimum number of keyframes per property. This makes tweaking things easier.
 - You can use multiples of your loop length, e.g. (4s, 8s, 12s...)
 
-*Advanced tip: What if you need your own expression on a property?*
+*Advanced tip: What if you need a different expression on a property?*
 
 Did you know `loopOut()` (and many other AE expressions) can be used to substitute the property's default expression?
 
