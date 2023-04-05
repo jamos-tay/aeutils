@@ -6,8 +6,6 @@ import graphSpd from './graphSpd';
 
 export default function moveDirection() {
     move();
-    round();
-    graphSpd();
 }
 
 function move() {
@@ -60,5 +58,8 @@ function move() {
     if (property.expression == '') {
         property.expression = 'loopOut(); // ' + valueStr;
     }
+    
+    round();
+    graphSpd();
 }
 
