@@ -84,11 +84,12 @@ Tips:
 If you're encountering errors:
 
 - IMPORTANT: This plugin was intended to be used on Photoshop layers, most rigging functionality will only work on layers imported on photoshop (i.e. the layer size is the same as the composition). As such many rigging functions won't work on layers whose height and width does not match the composition.
-    - Ensure that you import your .psd is imported as `Composition`, and not `Composition - Retain Layer Sizes`.
+    - Ensure that your .psd is imported as `Composition`, and not `Composition - Retain Layer Sizes`.
 
 ![Import comp](img/import-comp.png)
 
 - If rigging is being weird, reset your layer(s) transform properties (Position, Anchor, Rotation, Scale) to default values and try again.
+    - I strongly recommend doing all rigging before putting down any keyframes.
 - Check that you've selected the correct properties.
 - Check that you haven't accidentally selected just the property's parent, e.g., if the script needs a Position property selected:
 
