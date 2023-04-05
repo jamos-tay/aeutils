@@ -9,7 +9,7 @@ function shouldComponentRenderOnNewline(type) {
 }
 
 function buildUI(panel, config, scripts) {
-    const windowTitle = localize("$$$/AE/Script/Utils/Utils=AEUtils");
+    const windowTitle = localize("$$$/AE/Script/Utils/Utils=LoopUtils");
 
     const win = (panel instanceof Panel) ? panel : new Window('palette', windowTitle);
     win.spacing = 0;

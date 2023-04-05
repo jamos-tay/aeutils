@@ -1,11 +1,15 @@
-- [AEUtils](#aeutils)
+### See the [User Guide](user_docs.md) for usage help!
+
+## Contents
+
+- [LoopUtils](#looputils)
   - [User Installation](#user-installation)
   - [Dev Environment Setup](#dev-environment-setup)
     - [Requirements](#requirements)
     - [Set up](#set-up)
     - [Lint and Test](#lint-and-test)
 
-# AEUtils
+# LoopUtils
 
 A collection of AE scripts for quickly making smooth, looping animations.
 
@@ -14,12 +18,14 @@ A collection of AE scripts for quickly making smooth, looping animations.
 ## User Installation
 
 1. Go to [Releases](https://github.com/jamos-tay/aeutils/releases/)
-2. Download the latest `AEUtils.jsx` file
+2. Download the latest `LoopUtils.jsx` file
 3. Copy it to your After Effects Script folder
-    - Should be like `C:/Program Files/Adobe/Adobe After Effects 20XX/Support Files/Scripts/ScriptUI Panels/AEUtils.jsx`
-4. Open After Effects, click Window in the menu bar at the top and click `AEUtils.jsx`.
+    - Should be like `C:/Program Files/Adobe/Adobe After Effects 20XX/Support Files/Scripts/ScriptUI Panels/LoopUtils.jsx`
+4. Open After Effects, click Window in the menu bar at the top and click `LoopUtils.jsx`.
 
 See the [User Guide](user_docs.md) for more information.
+
+Tutorial to be added soon!
 
 ## Dev Environment Setup
 
@@ -28,14 +34,14 @@ See the [User Guide](user_docs.md) for more information.
 ### Requirements
 - node.js v16
 
-This app uses rollup to monitor for changes to the `src` folder, and automatically compiles the plugin to `build/AEUtils.jsx` and to the AE script folder (path specified in `rollup.config.js`).
+This app uses rollup to monitor for changes to the `src` folder, and automatically compiles the plugin to `build/LoopUtils.jsx` and to the AE script folder (path specified in `rollup.config.js`).
 
 ### Set up
 1. Run `npm ci`
 2. Update the path in `rollup.config.js` to your AE script folder
 3. Run terminal as administrator, `npm run watch`
     - Changes to `src` will immediately be updated in After Effects. Close the plugin window and reopen it to see them.
-    - **Note: You need to run as admin to copy the plugin to a protected folder (Program Files). If you don't want to do this you will have to copy build/AEUtils.jsx to your script folder manually.**
+    - **Note: You need to run as admin to copy the plugin to a protected folder (Program Files). If you don't want to do this you will have to copy build/LoopUtils.jsx to your script folder manually.**
 
 ### Lint and Test
 - `npm run lint`

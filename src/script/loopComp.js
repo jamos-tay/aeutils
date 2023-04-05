@@ -16,10 +16,12 @@ export default function loopComp() {
     if (isNaN(endTime)) {
         return;
     }
+    if (startTime < 1) {
+        alert("Start time needs to be at least 1.")
+    }
 
     const oldLayer = selectedLayers[0];
     const newLayer = oldLayer.duplicate();
-    oldLayer.property("Opacity").setValueAtTime(startTime - 1, 0);
     oldLayer.property("Opacity").setValueAtTime(startTime, 100);
     oldLayer.property("Opacity").setValueAtTime(endTime - 1, 100);
     oldLayer.property("Opacity").setValueAtTime(endTime, 0);

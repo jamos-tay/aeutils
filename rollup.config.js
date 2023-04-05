@@ -12,17 +12,17 @@ import json from '@rollup/plugin-json';
  * IMPORTANT: You will need to run as admin to copy to a protected folder (e.g. Program Files)
  * No error will be thrown if the copy fails.
  */
-const FILE_PATH = 'C:/Program Files/Adobe/Adobe After Effects 2022/Support Files/Scripts/ScriptUI Panels/AEUtils.jsx';
+const FILE_PATH = 'C:/Program Files/Adobe/Adobe After Effects 2022/Support Files/Scripts/ScriptUI Panels/LoopUtils.jsx';
 
 
 const config = {
-    input: ['src/aeutils.js'],
+    input: ['src/looputils.js'],
     external: ["src/**"],
     output: {
         dir: 'dist',
         format: 'iife',
         exports: 'default',
-        name: 'exportedAEUtils',
+        name: 'exportedLoopUtils',
     },
     plugins: [
         json(),
@@ -49,9 +49,9 @@ const config = {
                     return;
                 }
                 if (fs.existsSync(path.dirname(FILE_PATH))) {
-                    fs.appendFile('dist/aeutils.js', 'exportedAEUtils(this);', () => {
-                        fs.copyFile('dist/aeutils.js', FILE_PATH, () => undefined);
-                        fs.copyFile('dist/aeutils.js', 'build/AEUtils.jsx', () => undefined);
+                    fs.appendFile('dist/looputils.js', 'exportedLoopUtils(this);', () => {
+                        fs.copyFile('dist/looputils.js', FILE_PATH, () => undefined);
+                        fs.copyFile('dist/looputils.js', 'build/LoopUtils.jsx', () => undefined);
                     });
                 } else {
                     console.error('ERROR: Cannot find AE script directory. Ensure that the file path in rollup.config is correct.')

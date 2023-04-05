@@ -1,5 +1,5 @@
 {
-  "name": "aeutils",
+  "name": "looputils",
   "version": "1.0.0",
   "description": "Utilities for AfterEffects",
   "main": "index.jsx",

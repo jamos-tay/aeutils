@@ -44,7 +44,7 @@
         },
         {
             "type": "button",
-            "text": "Move Dir",
+            "text": "Move Arc",
             "script": "moveDirection",
             "tooltip": "Creates a 2 keyframe loop that moves the selected item's position by a fixed amount of pixels, in a fixed direction (0 - 12, like a clock face). Select any Position property (layer Position or puppet pin Position)."
         },
@@ -150,7 +150,7 @@
         },
         {
             "type": "button",
-            "text": "Skeleton",
+            "text": "Create Ref",
             "script": "skeleton",
             "tooltip": "Links each selected puppet pin's position to a new null object's position. Helpful for stacking position animations. Select any number of puppet pins on a single layer."
         },

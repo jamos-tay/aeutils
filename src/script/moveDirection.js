@@ -13,7 +13,7 @@ export default function moveDirection() {
 function move() {
     const property = compUtils.findPropertyWithName(compUtils.getAllSelectedProperties(), 'Position');
     if (property == null) {
-        alert('Select one Position property (not the Puppet Pin)');
+        alert('Select one Position property');
         return;
     }
     
