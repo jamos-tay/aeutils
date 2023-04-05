@@ -521,8 +521,10 @@ Small things I added in to make usage slightly easier at the cost of intuitivene
 
 ### Joint
 
-Joint will automatically attempt to assign roles to puppet pins based on letter name:
+Joint will automatically assign roles to puppet pins based on the puppet pin's name:
 - Anchor: `A`
 - Joint: `J`
 - Inner Joint: `JI`
 - Controller: `C`
+
+I used letters because I'm lazy.
