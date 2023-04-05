@@ -6,6 +6,7 @@
   - [Errors](#errors)
 - [Rig](#rig)
   - [Loop Out](#loop-out)
+    - [Making a Looping Animation](#making-a-looping-animation)
   - [Rig](#rig-1)
   - [Link](#link)
   - [Pair Pin](#pair-pin)
@@ -35,10 +36,12 @@
   - [Round](#round)
   - [Graph Spd](#graph-spd)
 - [Settings](#settings)
+  - [Loop Length](#loop-length)
   - [Speed %](#speed-)
   - [Round %](#round-)
   - [Flip Handles](#flip-handles)
-- [Optimization Tips](#optimization-tips)
+- [Etc](#etc)
+  - [Optimization Tips](#optimization-tips)
     - [Parenting](#parenting)
 
 # Foreword
@@ -105,9 +108,42 @@ The rig plugin contains functionality based on rigging layers together. It provi
 
 ![Loop out](img/loopout.png)
 
-Sets all selected properties to `loopOut()`, which makes the keyframes loop endlessly. I slap this on everything.
+Sets all selected properties and their children to `loopOut()`, which makes the keyframes loop endlessly.
 
 Only affects properties that are animated (i.e. 2 or more keyframes), and does not overwrite existing expressions.
+
+This is integral to how I make looping animations.
+
+### Making a Looping Animation
+
+Choose a loop length (say T = 4 seconds), then set the work area to be length 4s and slightly further to the right.
+
+For all animated properties, I create a 4 second keyframe loop. That is:
+- The first and last keyframe is 4 seconds apart (or some fraction like T/2, T/3, T/4 ...),
+- The first and last keyframe is the same,
+- The `loopOut()` expression is applied.
+
+![Loop out](img/loopexp.png)
+
+If these conditions are met, your work area is guaranteed to be a perfect loop. It's annoying to put `loopOut()` on everything but there's some benefits to doing it this way:
+
+- Keyframe loops don't have to start at the same time. This lets you offset your keyframes which leads to a smoother animation.
+- It's not affected by keyframe easing.
+- You use the minimum number of keyframes per property. This makes tweaking things easier.
+- You can use multiples of your loop length, e.g. (4s, 8s, 12s...)
+
+*Advanced tip: What if you need your own expression on a property?*
+
+Did you know `loopOut()` (and many other AE expressions) can be used to substitute the property's default expression?
+
+For example:
+```
+effect("Puppet").arap.mesh("Mesh 1").deform("Puppet Pin 1").position + [5, 0]; // Adds 5px to the puppet pin's x value
+```
+can be replaced with
+```
+loopOut() + [5, 0]; // Adds 5 px to the puppet pin's x value, then makes it loop
+```
 
 ## Rig
 
@@ -443,6 +479,10 @@ Used by [Move Arc](#move-arc) to round out the handles. I left an option to run 
 
 # Settings
 
+## Loop Length
+
+The length of your loop in seconds. Every script that generates looping keyframes will use this as the duration.
+
 ## Speed %
 
 This setting is used by [Move Arc](#move-arc). It affects the minimum speed at the extremes of the arc. The higher the setting, the more higher the minimum speed at the points of the arc.
@@ -465,9 +505,11 @@ By default:
 - If the clock direction > 6, the arc will move counter clockwise.
 - If the clock direction <= 6, the arc will move clockwise.
 
-# Optimization Tips
+# Etc
 
-Small ignorable things I added in to make usage slightly easier at the cost of intuitiveness.
+## Optimization Tips
+
+Small things I added in to make usage slightly easier at the cost of intuitiveness.
 
 ### Parenting
 
