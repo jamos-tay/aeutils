@@ -128,12 +128,7 @@ For all animated properties, I create a 4 second keyframe loop. That is:
 
 ![Loop out](img/loopexp.png)
 
-If these conditions are met, your work area is guaranteed to be a perfect loop. It's annoying to put `loopOut()` on everything but there's some benefits to doing it this way:
-
-- Keyframe loops don't have to start at the same time. This lets you offset your keyframes which leads to a smoother animation.
-- It's not affected by keyframe easing.
-- You use the minimum number of keyframes per property. This makes tweaking things easier.
-- You can use multiples of your loop length, e.g. (4s, 8s, 12s...)
+If these conditions are met, your work area is guaranteed to be a perfect loop.
 
 *See also [LoopOut as a variable](#loopout-as-a-variable)*
 
@@ -141,7 +136,7 @@ If these conditions are met, your work area is guaranteed to be a perfect loop. 
 
 *Rigs a layer to a puppet pin on another layer. Select a layer and a puppet pin.*
 
-The rig function rigs a layer to a puppet pin on another layer. You can think of it as advanced parenting, where the child layer not only inherits the parent's Transform properties, but also the movement of the puppet pin:
+The rig function rigs a layer to a puppet pin on another layer. You can think of it as puppet pin parenting, where the child layer not only inherits the parent's Transform properties, but also the movement of the puppet pin:
 
 ![Rig](img/rig.gif)
 
