@@ -11,6 +11,7 @@ export default function moveSet() {
 
     const loopTime = parseFloat(variableUtils.getVariable("loopLength"));
     if (isNaN(loopTime)) {
+        alert('Invalid loop length in settings');
         return;
     }
 
@@ -20,6 +21,7 @@ export default function moveSet() {
     }
     let values = valueStr.split(";");
     if (values == null || values.length == 0) {
+        alert('Input should be in format x;y;z... (e.g. 10;20;5)');
         return;
     }
 

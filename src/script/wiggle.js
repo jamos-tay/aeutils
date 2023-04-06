@@ -6,6 +6,7 @@ export default function wiggle() {
 
     const loopTime = parseFloat(variableUtils.getVariable("loopLength"));
     if (isNaN(loopTime)) {
+        alert('Invalid loop length in settings');
         return;
     }
     const freq = parseInt(prompt("Frequency?", ""));

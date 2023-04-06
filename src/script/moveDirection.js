@@ -27,11 +27,13 @@ function move() {
     }
     const values = valueStr.split(",");
     if (values.length != 2) {
+        alert('Input should be in format x,y (e.g. 100,3)');
         return;
     }
     const distance = parseFloat(values[0]);
     const direction = parseFloat(values[1]);
     if (isNaN(distance) || isNaN(direction)) {
+        alert('Expected numerical values for x,y');
         return;
     }
 

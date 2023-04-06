@@ -8,6 +8,7 @@
   - [Loop Out](#loop-out)
     - [Making a Looping Animation](#making-a-looping-animation)
   - [Rig](#rig-1)
+      - [Example](#example)
   - [Link](#link)
   - [Pair Pin](#pair-pin)
   - [Stagger](#stagger)
@@ -41,7 +42,7 @@
   - [Round %](#round-)
   - [Flip Handles](#flip-handles)
 - [Etc](#etc)
-  - [Optimization Tips](#optimization-tips)
+    - [LoopOut as a variable](#loopout-as-a-variable)
     - [Parenting](#parenting)
     - [Joint](#joint-1)
 
@@ -134,18 +135,7 @@ If these conditions are met, your work area is guaranteed to be a perfect loop. 
 - You use the minimum number of keyframes per property. This makes tweaking things easier.
 - You can use multiples of your loop length, e.g. (4s, 8s, 12s...)
 
-*Advanced tip: What if you need a different expression on a property?*
-
-Did you know `loopOut()` (and many other AE expressions) can be used to substitute the property's default expression?
-
-For example:
-```
-effect("Puppet").arap.mesh("Mesh 1").deform("Puppet Pin 1").position + [5, 0]; // Adds 5px to the puppet pin's x value
-```
-can be replaced with
-```
-loopOut() + [5, 0]; // Adds 5 px to the puppet pin's x value, then makes it loop
-```
+*See also [LoopOut as a variable](#loopout-as-a-variable)*
 
 ## Rig
 
@@ -156,6 +146,26 @@ The rig function rigs a layer to a puppet pin on another layer. You can think of
 ![Rig](img/rig.gif)
 
 This can be used as a basis for creating a simple skeleton. The Body is rigged to the Legs, the Arms and Neck to the Body and the Head to the Neck and so on.
+
+#### Example
+
+Here's how a simple upper body rig might look like.
+
+![Rig example](img/rigempty.png)
+
+First, figure out which layers should be rigged to which, and at which position:
+- The Right Arm and Right Wing should be rigged to the Body's right side.
+- The Left Arm and Left Wing should be rigged to the Body's left side.
+- The Neck should be rigged to the Body's top.
+- The Head should be rigged to the Neck's top.
+
+Then, set up your puppet pins and rig. Select the layers marked with a circle, select the puppet pin marked with an arrow and click `Rig`.
+
+![Rig example](img/rigexample.png)
+
+And here's how it looks. The Body's puppet pins are marked with yellow, and the Neck's puppet pins are marked in orange. Notice how the rigged layers move with the labelled puppet pins.
+
+![Rig example](img/rigexample.gif)
 
 ## Link
 
@@ -511,9 +521,20 @@ By default:
 
 # Etc
 
-## Optimization Tips
+### LoopOut as a variable
 
-Small things I added in to make usage slightly easier at the cost of intuitiveness.
+Did you know `loopOut()` (and many other AE expressions) can be used to substitute the property's default expression? This gives you values corresponding to looped keyframes.
+
+This is useful if you need a different expression on your property. If the expression uses the property's keyframes, you can replace the reference with `loopOut()`.
+
+For example:
+```
+effect("Puppet").arap.mesh("Mesh 1").deform("Puppet Pin 1").position + [5, 0]; // Adds 5px to the puppet pin's x value
+```
+can be replaced with
+```
+loopOut() + [5, 0]; // Loops the puppet pin's key frames, then adds 5px to the x value
+```
 
 ### Parenting
 

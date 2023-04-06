@@ -4,11 +4,13 @@ import * as variableUtils from '../utils/variableUtils'
 export default function graphSpd() {
     const selectedProperties = compUtils.filterAnimatableProperties(compUtils.getAllSelectedProperties());
     if (selectedProperties.length == 0) {
+        alert('No selected properties.');
         return;
     }
 
     const speedPercent = parseFloat(variableUtils.getVariable("speedPercent"));
     if (isNaN(speedPercent)) {
+        alert('Invalid speed % in settings.');
         return;
     }
 
