@@ -1,4 +1,4 @@
-### See the [User Guide](user_docs.md) for usage help!
+### See the [Quick Start](quick_start.md) or [User Guide](user_docs.md) for usage help!
 
 ## Contents
 
@@ -23,9 +23,7 @@ A collection of AE scripts for quickly making smooth, looping animations.
     - Should be like `C:/Program Files/Adobe/Adobe After Effects 20XX/Support Files/Scripts/ScriptUI Panels/LoopUtils.jsx`
 4. Open After Effects, click Window in the menu bar at the top and click `LoopUtils.jsx`.
 
-See the [User Guide](user_docs.md) for more information.
-
-Tutorial to be added soon!
+See the [Quick Start](quick_start.md) or [User Guide](user_docs.md) for more information.
 
 ## Dev Environment Setup
 
