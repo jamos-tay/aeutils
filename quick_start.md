@@ -49,21 +49,26 @@ The rig function rigs a layer to a puppet pin on another layer. You can think of
 
 This can be used as a basis for creating a simple skeleton. The Body is rigged to the Legs, the Arms and Neck to the Body and the Head to the Neck and so on.
 
-![Rig example](img/rigempty.png)
-
 So now, let's figure out which layers should be rigged to which, and at which position:
+
+![Rig example](img/qsrigpp.png)
+
 - The Right Arm and Right Wing should be rigged to the Body's right side.
 - The Left Arm and Left Wing should be rigged to the Body's left side.
 - The Neck should be rigged to the Body's top.
 - The Head should be rigged to the Neck's top.
 
-Then, set up your puppet pins and rig. Select the layers marked with a circle, select the puppet pin marked with an arrow and click `Rig`.
+Create your puppet pins as described above.
+
+Now, to do the rigging. Select the layers marked with a circle, select the puppet pin marked with an arrow and click `Rig`.
 
 ![Rig example](img/rigexample.png)
 
 There's no animation yet, but here's how it looks when it's moving. The Body's puppet pins are marked with yellow, and the Neck's puppet pins are marked in orange. Notice how the rigged layers move with the labelled puppet pins.
 
 ![Rig example](img/rigexample.gif)
+
+Some extra puppet pins are added to stabilize the movement.
 
 ## Movement
 
@@ -118,7 +123,7 @@ Select the Head's Rotate property, then click Move Set. The script will prompt y
 
 ![Rotate](img/qsrotate.png)
 
-This should give a base movement for the rest of the animation, so simply explore from there!
+And there we go! This should give a base movement for the rest of the animation, so simply explore from there!
 
 I recommend checking out the following to start with:
 - [`Swing`](./user_docs.md#swing)
