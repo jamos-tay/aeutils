@@ -33,6 +33,7 @@
   - [Parallax](#parallax)
   - [Chain](#chain)
   - [Create Ref](#create-ref)
+  - [Pair Pin Polar](#pair-pin-polar)
   - [Stitch](#stitch)
   - [Round](#round)
   - [Graph Spd](#graph-spd)
@@ -80,6 +81,8 @@ Tips:
 ![Pop up](img/popup.png)
 
 - Some buttons will read a value from the Settings tab which will affect functionality, such as the loop length. Check each script's documentation for which settings are read.
+- All plugin functionality is achieved using vanilla AE. You can uninstall the plugin at any time without breaking existing projects.
+- This also means you can tweak any generated result if it's not to your liking.
 
 ## Errors
 
@@ -463,6 +466,22 @@ The null's animation will be added to the puppet pin's animation. This lets you 
 ![Create Ref](img/skeletonall.gif)
 
 You can also just precomp, but that might break rigging.
+
+## Pair Pin Polar
+
+*Pair Pin Polar: Pairs a puppet pin (child) to another puppet pin (parent) so the child pin moves with the parent, but uses polar coordinates centered around the anchor point instead of cartesian. Select two puppet pins on the same layer.*
+
+This is similar to [Pair Pin](#pair-pin), except it uses relative polar coordinates instead of cartesian. It took an hour to get the math right and I used it like thrice so maybe just skip this and use [Pair Pin](#pair-pin).
+
+In essence, assuming the parent is at (x, y), Pair Pin sets the child at (x + Δx, y + Δy), where (Δx, Δy) is the distance between the child and the parent when the button is clicked.
+
+Pair pin polar uses polar coordinates, so if the parent is at (r, θ), Pair Pin Polar sets the child at (r + Δr, θ + Δθ), where (Δr, Δθ) is as above. The anchor point is used as the origin.
+
+The effect becomes a lot more obvious when rotating around an anchor point:
+
+![Swing Polar](img/swingpolar.gif)
+
+Don't worry too much about it, but the idea is that it works better than Pair Pin for orbiting movement since it maintains the relative angle and distance from the anchor point.
 
 ## Stitch
 

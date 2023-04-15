@@ -156,6 +156,12 @@
         },
         {
             "type": "button",
+            "text": "PP Polar",
+            "script": "bonePolar",
+            "tooltip": "Pair Pin Polar. Pairs a puppet pin (child) to another puppet pin (parent) so the child pin moves with the parent, but uses polar coordinates centered around the anchor point instead of cartesian. Select two puppet pins on the same layer."
+        },
+        {
+            "type": "button",
             "text": "Stitch",
             "script": "stitch",
             "tooltip": "Stitches two layers together so each child layer's puppet pins are linked (same as Link button) to a puppet pin on the parent layer if they are close enough. Place puppet pins in the same locations on two layers, and select the two layers."

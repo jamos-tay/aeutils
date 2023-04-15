@@ -5,7 +5,7 @@ export default function bone() {
     boneFn(false);
 }
 
-function boneFn(isPolar) {
+export function boneFn(isPolar) {
     const comp = compUtils.getActiveComp();
     const selectedLayers = compUtils.getSelectedLayers(comp);
     if (selectedLayers.length != 1) {
@@ -42,15 +42,20 @@ function boneFn(isPolar) {
     let parentPos = parentPoint.property("Position").value;
 
     if (isPolar) {
-        childPos = [Math.sqrt(childPos[0] * childPos[0] + childPos[1] * childPos[1]), Math.atan2(childPos[1], childPos[0])];
-        parentPos = [Math.sqrt(parentPos[0] * parentPos[0] + parentPos[1] * parentPos[1]), Math.atan2(parentPos[1], parentPos[0])];
-        childPoint.property("Position").expression = `parentPos = effect("Puppet").arap.mesh("Mesh 1").deform("${parentPoint.name}").position - transform.position;\r\n` +
-            `childPos = [length(parentPos) * ${(childPos[0] / parentPos[0])}, Math.atan2(parentPos[1], parentPos[0])${mathUtils.formatNumber(childPos[1] - parentPos[1])}];\r\n` +
-            '[childPos[0] * Math.cos(childPos[1]), childPos[0] * Math.sin(childPos[1])] + transform.position';
+        const layerPos = selectedLayers[0].property("Position").value;
+        childPos = [childPos[0] - layerPos[0], childPos[1] - layerPos[1]];
+        parentPos = [parentPos[0] - layerPos[0], parentPos[1] - layerPos[1]];
+        const childRPos = [Math.sqrt(childPos[0] * childPos[0] + childPos[1] * childPos[1]), Math.atan2(childPos[1], childPos[0])];
+        const parentRPos = [Math.sqrt(parentPos[0] * parentPos[0] + parentPos[1] * parentPos[1]), Math.atan2(parentPos[1], parentPos[0])];
+        childPoint.property("Position").expression = `parentPos = effect("Puppet").arap.mesh("Mesh 1").deform("${parentPoint.name}").position - [${layerPos[0]}, ${layerPos[1]}];\r\n` +
+            `childCPos = (effect("Puppet").arap.mesh("Mesh 1").deform("${childPoint.name}").position.numKeys > 0 ? loopOut() : ` +
+            `effect("Puppet").arap.mesh("Mesh 1").deform("${childPoint.name}").position)\r\n` +
+            `childPos = [length(parentPos) * ${(childRPos[0] / parentRPos[0])}, Math.atan2(parentPos[1], parentPos[0])${mathUtils.formatNumber(childRPos[1] - parentRPos[1])}];\r\n` +
+            `[childPos[0] * Math.cos(childPos[1]), childPos[0] * Math.sin(childPos[1])] + childCPos - [${childPos[0]}, ${childPos[1]}]`;
     } else {
         childPoint.property("Position").expression = `p = effect("Puppet").arap.mesh("Mesh 1").deform("${parentPoint.name}").position;\r\n` +
             `p2 = (effect("Puppet").arap.mesh("Mesh 1").deform("${childPoint.name}").position.numKeys > 0 ? loopOut() : ` +
             `effect("Puppet").arap.mesh("Mesh 1").deform("${childPoint.name}").position)\r\n` +
-            `p + p2 - [${parentPos[0]},${parentPos[1]}]`;
+            `p + p2 - [${parentPos[0]}, ${parentPos[1]}]`;
     }
 }
