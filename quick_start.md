@@ -18,6 +18,8 @@ Let's see how we can animate a simple upper body consisting of the following lay
 
 ![Quick Start Layers](img/quickstartlayers.png)
 
+First, follow the steps in the [readme](README.md#user-installation) to install the plugin.
+
 ## Making a Looping Animation
 
 There's multiple ways to make a perfect loop, but how I do it is using the `loopOut()` expression.
