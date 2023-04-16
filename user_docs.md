@@ -83,6 +83,7 @@ Tips:
 - Some buttons will read a value from the Settings tab which will affect functionality, such as the loop length. Check each script's documentation for which settings are read.
 - All plugin functionality is achieved using vanilla AE. You can uninstall the plugin at any time without breaking existing projects.
 - This also means you can tweak any generated result if it's not to your liking.
+- This plugin relies heavily on [AE expressions](https://helpx.adobe.com/sg/after-effects/using/expression-basics.html). No need to know how to write them, but it's good to know what they are and how they work in general.
 
 ## Errors
 
@@ -101,6 +102,7 @@ If you're encountering errors:
 ![Select the correct property](img/select_property.png)
 
 - Check that the settings and inputs are valid. Read each script's documentation for more information.
+- If undoing a function doesn't work, try deleting whatever objects/keyframes were created and clearing property expressions manually (Alt + Click the stopwatch).
 
 # Rig
 
