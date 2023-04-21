@@ -46,6 +46,7 @@
     - [LoopOut as a variable](#loopout-as-a-variable)
     - [Parenting](#parenting)
     - [Joint](#joint-1)
+    - [UI Customization (Devs)](#ui-customization-devs)
 
 # Foreword
 
@@ -70,6 +71,8 @@ Thanks to [@masterblader191](https://twitter.com/masterblader191) for allowing m
 # Using the Plugin
 
 The plugin consists of buttons each linked to a script or functionality. To use a script, select the required properties in the timeline panel and click on the respective button.
+
+Word of advice: Don't worry if most of the buttons don't make any sense! This is really just a dump of all the scripts I use in without much order, so just pick a few you like and use them (if any). If you're adventurous you can look at [configuring the UI](#ui-customization-devs).
 
 Tips:
 - Hover over a button to see a description of what it does.
@@ -304,9 +307,11 @@ Basically:
 - Rotation determines how much the puppet pin moves.
 - Stagger determines how much delay there should be between each puppet pin's loop.
 
-The points don't necessarily need to be in a straight line. A handy tip is to think of them radiating outwards from the anchor point. This gives a wavy effect:
+The points don't necessarily need to be in a straight line. A handy tip is to think of them radiating outwards from the anchor point (yellow pins). This gives a wavy effect:
 
 ![Swing Detail](img/swingdtail.gif)
+
+One benefit of doing it this way is that you can also pin down areas that shouldn't move. In the above example, puppet pins with no animation (red pins) are placed on the hair line, allowing it to attach to the head.
 
 The next 4 controls are just variations on swing that are used in specific cases. I wouldn't worry about them too much, just use `Swing`.
 
@@ -565,3 +570,43 @@ Joint will automatically assign roles to puppet pins based on the puppet pin's n
 - Controller: `C`
 
 I used letters because I'm lazy.
+
+### UI Customization (Devs)
+
+*This requires you to have set up the [dev environment](./README.md#dev-environment-setup)*
+
+If you'd like to add or remove buttons/scripts from the UI, here's a brief description of how it's built.
+
+The UI is built dynamically from `config.json` under the `src` folder. It uses the following format:
+
+```
+{
+    "<Tab Name>": [
+        {
+            "type": "statictext",
+            "text": "General"
+        },
+        {
+            "type": "button",
+            "text": "Loop Out",
+            "script": "loopOut",
+            "tooltip": "Sets loopOut() on all selected properties with at least two keyframes and no expression."
+        },
+
+        // Button Object
+        {
+            "type": "button", // button, statictext, variable, checkbox
+            "text": "<Button Name>", // text on button
+            "script": "<Script>", // corresponding .js file in the script folder
+            "tooltip": "<Tooltip>" // shows up when hovering over button
+        },
+    ]
+    ...
+}
+```
+
+Variables and checkboxes allow the user to input settings which will map to a variable that can be used in a script.
+
+To add a script, add a new `.js` file in the `script` folder, then update `config.json` with a new button object and restart `npm start`. Clicking the button will call the default export in your `.js` file (`export default function myFunction() ...`).
+
+To remove an existing button, simply delete the curresponding button object from `config.json` and restart `npm start`.
