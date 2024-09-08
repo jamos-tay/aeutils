@@ -21,10 +21,18 @@ function move() {
         return;
     }
 
-    const valueStr = prompt("Distance and direction? e.g. 100,3", "");
+    let valueStr = prompt("Distance and direction? e.g. 100,3", "");
     if (!valueStr) {
         return;
     }
+    const oldValueStr = valueStr;
+
+    variableUtils.setInternalVariable("invertFlipHandles", valueStr.indexOf('!') !== -1);
+    valueStr = valueStr.replace('!', "");
+
+    const skipRound =valueStr.indexOf('=') !== -1;
+    valueStr = valueStr.replace('=', "");
+
     const values = valueStr.split(",");
     if (values.length != 2) {
         alert('Input should be in format x,y (e.g. 100,3)');
@@ -58,9 +66,16 @@ function move() {
         property.setSpatialAutoBezierAtKey(i, true);
     }
     if (property.expression == '') {
-        property.expression = 'loopOut(); // ' + valueStr;
+        property.expression = 'loopOut()';
+    } else if (property.expression.indexOf('//') > -1) {
+        property.expression = property.expression.substring(0, property.expression.indexOf('//'));
     }
+    property.expression = property.expression + ' // ' + oldValueStr;
     
+    if (skipRound) {
+        return;
+    }
+
     round();
     graphSpd();
 }

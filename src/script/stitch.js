@@ -13,13 +13,13 @@ export default function stitch() {
         return;
     }
 
-    if (selectedLayers[0].parent == selectedLayers[1]) {
-        parentLayer = selectedLayers[1];
-        childLayer = selectedLayers[0];
-    } else if (selectedLayers[1].parent == selectedLayers[0]) {
-        parentLayer = selectedLayers[0];
-        childLayer = selectedLayers[1];
-    }
+    // if (selectedLayers[0].parent == selectedLayers[1]) {
+    //     parentLayer = selectedLayers[1];
+    //     childLayer = selectedLayers[0];
+    // } else if (selectedLayers[1].parent == selectedLayers[0]) {
+    //     parentLayer = selectedLayers[0];
+    //     childLayer = selectedLayers[1];
+    // }
     if (childLayer == null) {
         if (confirm("Is " + selectedLayers[0].name + " the parent?")) {
             parentLayer = selectedLayers[0];
@@ -47,5 +47,5 @@ export default function stitch() {
             linkPoints(parentPoint, childPoints[i]);
         }
     }
-    childLayer.parent = parentLayer;
+    // childLayer.parent = parentLayer;
 }

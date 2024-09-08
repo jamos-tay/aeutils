@@ -7,12 +7,11 @@ export default function loopOut(responses) {
     for (let i = 0; i < selectedLayers.length; i++) {
         loopAllProperties(selectedLayers[i], responseString);
     }
-    app.endUndoGroup();
 }
 
 function loopAllProperties(prop, responseString) {
     if (prop.propertyType == PropertyType.PROPERTY) {
-        if (prop.canSetExpression && prop.numKeys >= 2 && (!prop.expressionEnabled || responseString)) {
+        if (prop.canSetExpression && prop.numKeys >= 2 && !prop.expressionEnabled) {
             prop.expression = 'loopOut();' + (responseString ? ' // ' + responseString.toString() : '');
         }
     } else { // must be a group

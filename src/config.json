@@ -72,12 +72,6 @@
         },
         {
             "type": "button",
-            "text": "S. Offset",
-            "script": "swingOffset",
-            "tooltip": "Same as swing, but you can specify the start and end degrees. E.g. (0 to 12 instead of -6 to 6)."
-        },
-        {
-            "type": "button",
             "text": "S. Rotate",
             "script": "swingRotate",
             "tooltip": "Same as swing, but each puppet pin will be rotated around the previous puppet pin by a specified amount. Puppet pins are ordered from bottom to top by how they're displayed on the Timeline."
@@ -87,15 +81,15 @@
             "text": "S. Puppet",
             "script": "swingPuppet",
             "tooltip": "Same as swing, but the puppet pins will be rotated around the first selected puppet pin (the bottom-most selected one in the Timeline)."
-        }
-    ],
-    "General": [
+        },
         {
             "type": "button",
             "text": "Scale",
             "script": "scale",
             "tooltip": "Scales the selected keyframes by a specified amount based on the range of values covered by the keyframes. (e.g. [Rotate between 90 - 110] (scale 2x) => [Rotate between 80 - 120]). Select all keyframes of a property."
-        },
+        }
+    ],
+    "General": [
         {
             "type": "button",
             "text": "Loop Cmp",
@@ -133,9 +127,61 @@
             "tooltip": "Adds a looping wiggle with the given frequency and amplitude. Select any number of properties."
         },
         {
-            "type": "statictext",
-            "text": "Experimental"
+            "type": "button",
+            "text": "Create Ref",
+            "script": "skeleton",
+            "tooltip": "Links each selected puppet pin's position to a new null object's position. Helpful for stacking position animations. Select any number of puppet pins on a single layer."
         },
+        {
+            "type": "button",
+            "text": "Prop Ref",
+            "script": "sliderref",
+            "tooltip": "Links a property's value to a slider. Helpful for stacking animations of 1 dimensional properties. Select any 1 dimensional property (e.g. opacity, rotation)."
+        },
+        {
+            "type": "button",
+            "text": "Copy Slide",
+            "script": "copyslider",
+            "tooltip": "Creates a copy of a slider on a different layer, then links the selected slider to it. Select 1 or more slider properties."
+        },
+        {
+            "type": "button",
+            "text": "S. Chain",
+            "script": "swingPuppetChain",
+            "tooltip": "Swing puppet chain."
+        },
+        {
+            "type": "button",
+            "text": "Round",
+            "script": "round",
+            "tooltip": "Attempts to round the corners of a position animation. The roundness is determined by the Round % variable in settings. Select any Position property's keyframes."
+        },
+        {
+            "type": "button",
+            "text": "Graph Spd",
+            "script": "graphSpd",
+            "tooltip": "Easy ease always causes puppet pins to come to a stop at a keyframe. Bumps up the speed graph keyframes slightly so the puppet pin never has 0 speed. The minimum speed is determined by the Speed % variable in settings. Select any property's keyframes."
+        },
+        {
+            "type": "button",
+            "text": "Back 10",
+            "script": "back10",
+            "tooltip": "Shifts the first keyframe of all properties 10 frames back."
+        },
+        {
+            "type": "button",
+            "text": "Clean",
+            "script": "clean",
+            "tooltip": "Removes keyframes on properties with only one key."
+        },
+        {
+            "type": "button",
+            "text": "Blink",
+            "script": "blink",
+            "tooltip": "Blink."
+        }
+    ],
+    "Experimental": [
         {
             "type": "button",
             "text": "Parallax",
@@ -147,12 +193,6 @@
             "text": "Chain",
             "script": "chain",
             "tooltip": "Given two parent puppet pins positioned at two corners of a rectangle, chains all other puppet pins so their X and Y position stays relative to their position in the rectangle. Select any number of puppet pins, the two bottom-most puppet pins in the Timeline will be the parents."
-        },
-        {
-            "type": "button",
-            "text": "Create Ref",
-            "script": "skeleton",
-            "tooltip": "Links each selected puppet pin's position to a new null object's position. Helpful for stacking position animations. Select any number of puppet pins on a single layer."
         },
         {
             "type": "button",
@@ -168,15 +208,15 @@
         },
         {
             "type": "button",
-            "text": "Round",
-            "script": "round",
-            "tooltip": "Attempts to round the corners of a position animation. The roundness is determined by the Round % variable in settings. Select any Position property's keyframes."
+            "text": "Ease Inf",
+            "script": "easeInfluence",
+            "tooltip": "Sets the ease influence on all selected properties' keyframes."
         },
         {
             "type": "button",
-            "text": "Graph Spd",
-            "script": "graphSpd",
-            "tooltip": "Easy ease always causes puppet pins to come to a stop at a keyframe. Bumps up the speed graph keyframes slightly so the puppet pin never has 0 speed. The minimum speed is determined by the Speed % variable in settings. Select any property's keyframes."
+            "text": "Shift Loop",
+            "script": "shiftLoop",
+            "tooltip": "Shifts all keyframes as close as possible to 0s respecting loop length."
         }
     ],
     "Settings": [

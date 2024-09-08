@@ -18,7 +18,6 @@
   - [Move Set](#move-set)
   - [Swing](#swing)
   - [S. Toward](#s-toward)
-  - [S. Offset](#s-offset)
   - [S. Rotate](#s-rotate)
   - [S. Puppet](#s-puppet)
 - [General](#general)
@@ -307,13 +306,15 @@ Basically:
 - Rotation determines how much the puppet pin moves.
 - Stagger determines how much delay there should be between each puppet pin's loop.
 
+The rotation can either be one number (5: swing +5 to -5 degrees) or two numbers separated by a comma (5,3: swing +5 to -3 degrees).
+
 The points don't necessarily need to be in a straight line. A handy tip is to think of them radiating outwards from the anchor point (yellow pins). This gives a wavy effect:
 
 ![Swing Detail](img/swingdtail.gif)
 
 One benefit of doing it this way is that you can also pin down areas that shouldn't move. In the above example, puppet pins with no animation (red pins) are placed on the hair line, allowing it to attach to the head.
 
-The next 4 controls are just variations on swing that are used in specific cases. I wouldn't worry about them too much, just use `Swing`.
+The next few controls are just variations on swing that are used in specific cases. I wouldn't worry about them too much, just use `Swing`.
 
 ## S. Toward
 
@@ -322,14 +323,6 @@ The next 4 controls are just variations on swing that are used in specific cases
 ![Swing Toward](img/swingtoward.gif)
 
 Useful in cases where the layer is anchored at both ends, for example wires on a telephone pole.
-
-## S. Offset
-
-*Same as swing, but you can specify the start and end degrees. E.g. (0 to 12 instead of -6 to 6).*
-
-![Swing offset](img/swingoffset.gif)
-
-The above shows a regular `Swing` compared to `Swing Offset`. Helpful sometimes when you need to control the angle of swing.
 
 ## S. Rotate
 

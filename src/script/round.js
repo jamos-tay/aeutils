@@ -28,6 +28,10 @@ function roundFn() {
     if (flipHandles) {
         percentage = -percentage;
     }
+    if (variableUtils.getVariable("invertFlipHandles")){
+        percentage = -percentage;
+        variableUtils.setInternalVariable("invertFlipHandles", false);
+    }
 
     for (let i = 0; i < selectedProperties.length; i++) {
         if (selectedProperties[i].numKeys != 3) {

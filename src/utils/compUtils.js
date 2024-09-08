@@ -62,6 +62,10 @@ export function getActiveComp() {
     return comp;
 }
 
+export function frameDuration() {
+    return getActiveComp().frameDuration;
+}
+
 export function getSelectedLayers() {
     const comp = getActiveComp();
     const targetLayers = comp.selectedLayers;

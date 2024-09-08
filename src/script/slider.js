@@ -9,8 +9,22 @@ export default function slider() {
             properties.push(selectedProperties[j]);
         }
     }
+
     if (properties.length === 0) {
-        alert("Select at least one property with 2 keys.")
+        const selectedLayers = compUtils.getSelectedLayers();
+        if (selectedLayers.length === 0) {
+            alert("Select at least one property with 2 keys, or one layer.")
+            return;
+        }
+
+        let sliderName = prompt("Slider name?", "");
+        if (!sliderName) {
+            return;
+        }
+
+        const slider = selectedLayers[0].property("Effects").addProperty("Slider Control");
+        slider.property("Slider").setValueAtTime(0, 0);
+        slider.name = sliderName + " Slider";
         return;
     }
     

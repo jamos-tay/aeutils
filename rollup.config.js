@@ -12,7 +12,7 @@ import json from '@rollup/plugin-json';
  * IMPORTANT: You will need to run as admin to copy to a protected folder (e.g. Program Files)
  * No error will be thrown if the copy fails.
  */
-const FILE_PATH = 'C:/Program Files/Adobe/Adobe After Effects 2022/Support Files/Scripts/ScriptUI Panels/LoopUtils.jsx';
+const FILE_PATH = 'C:/Program Files/Adobe/Adobe After Effects 2023/Support Files/Scripts/ScriptUI Panels/LoopUtils.jsx';
 
 
 const config = {

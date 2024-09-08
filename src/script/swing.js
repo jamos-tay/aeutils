@@ -30,20 +30,24 @@ export function swingFn(mode) {
     }
 
     const deg = [];
-    if (mode == 'offset') {
-        deg[0] = parseFloat(compUtils.promptWithAdd(responses, "Degree start?", ""));
-        if (isNaN(deg[0])) {
-            return;
-        }
-        deg[0] *= mathUtils.DEGREES_PER_RADIAN;
-        deg[1] = parseFloat(compUtils.promptWithAdd(responses, "Degree end?", ""));
-        if (isNaN(deg[1])) {
-            return;
-        }
-        deg[1] *= mathUtils.DEGREES_PER_RADIAN;
+
+    const swingDeg = compUtils.promptWithAdd(responses, "Rotate how many degrees?", "");
+    if (!swingDeg) {
+        return;
     }
-    else {
-        deg[0] = parseFloat(compUtils.promptWithAdd(responses, "Rotate how many degrees?", ""));
+    if (swingDeg.indexOf(',') != -1) {
+        const values = swingDeg.split(",");
+        if (values.length != 2) {
+            alert('Input should be a number, or in format x,y (e.g. 100,3)');
+            return;
+        }
+        deg[0] = parseFloat(values[0]) * mathUtils.DEGREES_PER_RADIAN;
+        deg[1] = parseFloat(values[1]) * mathUtils.DEGREES_PER_RADIAN;
+        if (isNaN(deg[0]) || isNaN(deg[1])) {
+            return;
+        }
+    } else {
+        deg[0] = parseFloat(swingDeg);
         if (isNaN(deg[0])) {
             return;
         }
@@ -60,6 +64,13 @@ export function swingFn(mode) {
         degPerPoint *= mathUtils.DEGREES_PER_RADIAN;
     }
 
+    const props = [];
+    doSwing(selectedLayers, mode, puppetPins, deg, degPerPoint, loopTime, props);
+    stagger(responses, props.reverse());
+    loopOut(responses);
+}
+
+export function doSwing(selectedLayers, mode, puppetPins, deg, degPerPoint, loopTime, props) {
     let startAnchors = [selectedLayers[0].property("Position").value];
     let endAnchors = [selectedLayers[0].property("Position").value];
     if (mode == 'puppet') {
@@ -68,7 +79,6 @@ export function swingFn(mode) {
         puppetPins.shift();
     }
 
-    const props = [];
     for (let i = 0; i < puppetPins.length; i++) {
         while (puppetPins[i].property("Position").numKeys > 0) {
             puppetPins[i].property("Position").removeKey(1);
@@ -88,7 +98,9 @@ export function swingFn(mode) {
             }
         }
 
+        let setSpatial = true;
         if (mode == 'toward') {
+            setSpatial = false;
             startPos = rotateAround(startPos, puppetPos, Math.PI / 2);
             endPos = rotateAround(endPos, puppetPos, Math.PI / 2);
         }
@@ -96,13 +108,34 @@ export function swingFn(mode) {
         startAnchors.push(startPos);
         endAnchors.push(endPos);
 
+        let inTangent;
+        let outTangent;
+        const easeIn = new KeyframeEase(0, 33.333);
+        const easeOut = new KeyframeEase(0, 33.333);
+
         puppetPins[i].property("Position").setValueAtTime(loopTime * 0, startPos);
+        puppetPins[i].property("Position").setTemporalEaseAtKey(1, [easeIn], [easeOut]);
+
         puppetPins[i].property("Position").setValueAtTime(loopTime * 0.5, endPos);
+        puppetPins[i].property("Position").setTemporalEaseAtKey(2, [easeIn], [easeOut]);
+
         puppetPins[i].property("Position").setValueAtTime(loopTime * 1, startPos);
+        puppetPins[i].property("Position").setTemporalEaseAtKey(3, [easeIn], [easeOut]);
+
+        if (setSpatial) {
+            inTangent = [startPos[0] - puppetPos[0], startPos[1] - puppetPos[1]];
+            outTangent = [puppetPos[0] - startPos[0], puppetPos[1] - startPos[1]];
+            puppetPins[i].property("Position").setSpatialTangentsAtKey(1, inTangent, outTangent);
+            inTangent = [puppetPos[0] - endPos[0], puppetPos[1] - endPos[1]];
+            outTangent = inTangent;
+            puppetPins[i].property("Position").setSpatialTangentsAtKey(2, inTangent, outTangent);
+            inTangent = [puppetPos[0] - startPos[0], puppetPos[1] - startPos[1]];
+            outTangent = [startPos[0] - puppetPos[0], startPos[1] - puppetPos[1]];
+            puppetPins[i].property("Position").setSpatialTangentsAtKey(3, inTangent, outTangent);
+        }
+
         props.push(puppetPins[i].property("Position"));
     }
-    stagger(responses, props.reverse());
-    loopOut(responses);
 }
 
 function rotateAround(pPos, aPos, deg) {

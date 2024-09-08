@@ -45,7 +45,7 @@ function buildUI(panel, config, scripts) {
                 case "button": {
                     const text = componentData.text;
                     const button = currentRow.add("button", undefined, localize(`$$$/AE/Script/Utils/${sanitizeName(text)}=${text}`));
-                    button.helpTip = componentData.tooltip || '';
+                    // button.helpTip = componentData.tooltip || '';
                     button.onClick = () => {
                         try {
                             app.beginUndoGroup(componentData.text);

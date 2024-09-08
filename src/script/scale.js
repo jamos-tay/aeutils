@@ -13,7 +13,7 @@ export default function scale() {
     }
 
     for (let i = 0; i < selectedProperties.length; i++) {
-        if (!selectedProperties[i].numKeys || selectedProperties[i].numKeys == 0) {
+        if (!selectedProperties[i].numKeys || selectedProperties[i].numKeys == 0 || selectedProperties[i].numKeys == 1) {
             continue;
         }
 

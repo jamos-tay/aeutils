@@ -80,11 +80,14 @@ export default function joint() {
         solidLayer.property("Anchor Point").setValue(controllerPoint.property("Position").value);
         solidLayer.moveBefore(jointLayer);
         solidLayer.parent = jointLayer;
-        const controllerRef = `thisComp.layer("${solidLayer.name}").transform.position`;
 
         jointPoint.property("Position").expression =
+            `anchor = thisComp.layer("${anchorLayer.name}");\r\n` +
+            `cont = thisComp.layer("${controllerLayer.name} Controller");\r\n` +
+            `p = anchor.toComp(anchor.effect("Puppet").arap.mesh("Mesh 1").deform("${anchorPoint.name}").position);\r\n` +
+            `p2 = cont.toComp(cont.transform.position);\r\n` +
             `${intersectMin}\r\n` +
-            `intersect(${anchorRef}[0], ${anchorRef}[1], ${r1}, ${controllerRef}[0], ${controllerRef}[1], ${r2})[${intersectionIndex}]`;
+            `fromComp(intersect(p[0], p[1], ${r1}, p2[0], p2[1], ${r2})[${intersectionIndex}])`;
         controllerPoint.property("Position").expression =
             `L = thisComp.layer("${solidLayer.name}");\r\n` +
             `fromComp(L.toComp(thisComp.layer("${solidLayer.name}").transform.anchorPoint))`;

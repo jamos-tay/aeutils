@@ -22,27 +22,39 @@ export default function stagger(responses, props) {
     if (isNaN(offsetValue)) {
         return;
     }
-    offsetValue *= 1 / 30;
+    offsetValue *= compUtils.frameDuration();
     
-    let delay = 0;
-    for (let i = 0; i < props.length; i++){
+    doStagger(props, offsetValue);
+}
+
+export function doStagger(props, offsetValue, baseOffsetValue = 0) {
+    let delay = baseOffsetValue;
+    for (let i = 0; i < props.length; i++) {
         const keys = [];
         for (let j = 1; j <= props[i].numKeys; j++) {
-            keys.push([props[i].keyTime(j), props[i].keyValue(j)]);
+            const keyProps = {
+                value: [props[i].keyTime(j), props[i].keyValue(j)],
+                interpolation: [props[i].keyInInterpolationType(j), props[i].keyOutInterpolationType(j)],
+                ease: [props[i].keyInTemporalEase(j), props[i].keyOutTemporalEase(j)]
+            }
+            if (props[i].isSpatial) {
+                keyProps.tangent = [props[i].keyInSpatialTangent(j), props[i].keyOutSpatialTangent(j)];
+            }
+            keys.push(keyProps);
         }
         const firstOffset = props[i].keyTime(1);
         while (props[i].numKeys > 0) {
             props[i].removeKey(1);
         }
         for (let j = 0; j < keys.length; j++) {
-            const easeIn = new KeyframeEase(0, 33.333);
-            const easeOut = new KeyframeEase(0, 33.333);
-            props[i].setValueAtTime(keys[j][0] - firstOffset + delay, keys[j][1]);
-            props[i].setTemporalEaseAtKey(j + 1, [easeIn], [easeOut]);
+            props[i].setValueAtTime(keys[j].value[0] - firstOffset + delay, keys[j].value[1]);
+            props[i].setTemporalEaseAtKey(j + 1, keys[j].ease[0], keys[j].ease[1]);
+            props[i].setInterpolationTypeAtKey(j + 1, keys[j].interpolation[0], keys[j].interpolation[1]);
             if (props[i].isSpatial) {
-                props[i].setSpatialAutoBezierAtKey(j + 1, true);
+                props[i].setSpatialTangentsAtKey(j + 1, keys[j].tangent[0], keys[j].tangent[1]);
             }
         }
         delay += offsetValue;
     }
 }
+
